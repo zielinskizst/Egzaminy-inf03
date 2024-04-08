@@ -1,0 +1,44 @@
+body {
+	box-sizing: border-box;
+	margin: 0;
+}
+#baner {
+	background: #5A9089;
+	color: white;
+	font-family: Verdana;
+	text-align: center;
+	height: 100px;
+}
+#lewy {
+	background: #BAD2CF;
+	width: 55%;
+	height: 600px;
+	float: left;
+}
+#prawy {
+	background: #88AFAA;
+	width: 45%;
+	height: 600px;
+	float: left;
+}
+#stopka {
+	background: #5A9089;
+	color: white;
+	text-align: right;
+	clear: both;
+}
+table, td {
+	border: 1px dotted green;
+	width: 400px;
+	margin: 15px;
+	text-align: center;
+}
+img {
+	padding: 25px;
+}
+ul {
+	list-style-type: circle;
+}
+h1 {
+	margin: 0;
+}
