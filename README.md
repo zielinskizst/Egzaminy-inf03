@@ -1,11 +1,5 @@
 ## Technik informatyk - egzamin zawodowy E.14/EE.09/INF.03
-Arkusze z plikami wraz z rozwiazaniami napisanymi przeze mnie.
-
-Discord: **Chriskyy**
-
-Donate: 
-- [Revolut - @chriskyy](https://revolut.me/chriskyy)
-- [Buycoffee.to - chriskyy](https://buycoffee.to/chriskyy)
+Arkusze z plikami wraz z rozwiazaniami.
 
 Wybrane szczególne arkusze:
 - **JS** - Formatowanie dokumentu HTML [E.14-02-19.01](e14/e14_2019_01_02)
