@@ -12,7 +12,6 @@ function obliczWesele() {
         wynik.innerHTML = "Koszt Twojego wesela to " + koszt + " złotych"
     }
 }
-
 /******************/
 /* e14_2018_06_06 */
 /******************/
