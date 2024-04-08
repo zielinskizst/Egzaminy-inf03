@@ -1,0 +1,52 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<meta charset="UTF-8" />
+	<title>Dodaj użytkownika</title>
+	<link rel="stylesheet" href="styl4.css" />
+</head>
+<body>
+	<div id="baner">
+		<h2>Rejestracja użytkownika</h2>
+	</div>
+	<div id="lewy">
+		<h3>Wpisz swoje dane</h3>
+		<form action="dodajDane.php" method="post">
+			<label>Imię<br/>
+				<input type="text" name="imie" /><br/>
+			</label>
+			<label>Nazwisko<br/>
+				<textarea rows="1" cols="40" name="nazwisko"></textarea><br/>
+			</label>
+			<label>Telefon<br/>
+				<input type="text" name="telefon" /><br/>
+			</label>
+			<label>Email<br/>
+				<textarea rows="1" cols="40" name="email"></textarea><br/>
+			</label>
+			<br/>
+			<button type="reset">CZYŚĆ</button>
+			<button type="submit">WYŚLIJ</button>
+		</form>
+	</div>
+	<div id="prawy">
+		<img src="ksiazki.jpg" alt="sprzedaj książkę" />
+		<p><a href="kwerendy.txt" download>kwerendy SQL</a></p>
+		<h3>Kategoria</h3>
+		<ul>
+			<li>Książki</li>
+			<li>Muzyka</li>
+			<li>Filmy</li>
+		</ul>
+		<h3>Podkategorie</h3>
+		<ul>
+			<li>Biografia</li>
+			<li>Kryminał</li>
+			<li>Komiks</li>
+		</ul>
+	</div>
+	<div id="stopka">
+		Portal ogłoszeniowy opracował: PESEL
+	</div>
+</body>
+</html>
