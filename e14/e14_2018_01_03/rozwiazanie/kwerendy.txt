@@ -1,0 +1,5 @@
+
+1. INSERT INTO ogloszenie VALUES (NULL, 1, 2, 0, 'Celine Dion', 'Sprzedam CD piosenkarki')
+2. SELECT tytul, tresc FROM ogloszenie WHERE podkategoria = 13
+3. CREATE USER 'andrzej'@'localhost' IDENTIFIED BY 'xsw23'
+4. GRANT SELECT, ALTER ON ogloszenie.* TO 'andrzej'@'localhost'
