@@ -1,1 +1,947 @@
+<!DOCTYPE html>
+<html lang="pl">
 
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Zadania JS z poprzednich egzaminów</title>
+    <link rel="stylesheet" href="style.css">
+</head>
+
+<body>
+    <div class="zadanie">
+        <h2>e14_2018_06_05</h2>
+        <details>
+            <summary>Wymagania dotyczące skryptu:</summary>
+            <ul>
+                <li>Pobiera dane z obu pól z panelu dolnego (liczbę oraz stan pola typu checkbox)</li>
+                <li>Oblicza na podstawie pobranych wartości koszt wesela, według wytycznych</li>
+                <li>Koszt dla jednej osoby to 100 złotych</li>
+                <li>W przypadku wyprawiania poprawin, całkowity koszt należy powiększyć o 30%</li>
+                <li>Wyświetla pod przyciskiem tekst: „Koszt Twojego wesela to … złotych”, gdzie w miejscu kropek
+                    wstawiony jest obliczony koszt wesela.</li>
+            </ul>
+        </details>
+        <h2>Ile będzie kosztowało moje wesele?</h2>
+        <label>Podaj liczbę gości:
+            <input id="iloscGosci" type="number" /><br />
+        </label>
+        <label>
+            <input id="poprawiny" type="checkbox" />Wesele z poprawinami?<br /></label>
+        </label>
+        <button type="button" onclick="obliczWesele()">Oblicz koszt</button>
+        <p id="wynik_1"></p>
+    </div>
+    <div class="zadanie">
+        <h2>e14_2018_06_06</h2>
+        <details>
+            <summary>Wymagania dotyczące skryptu:</summary>
+            <ul>
+                <li>Pobiera dane z obu pól z panelu dolnego (liczbę oraz stan pola typu checkbox)</li>
+                <li> Zależnie od stanu pola typu checkbox podejmowane są działania:</li>
+                <ul>
+                    <li> W przypadku zaznaczenia, wypisywany jest pod przyciskiem tekst: „Dowieziemy Twoją pizzę za
+                        darmo”</li>
+                    <li>W przypadku odznaczenia, wyliczany jest koszt dowozu, równy 1 zł za 1 km liczony w obie strony
+                        (np. dla 5 km koszt jest równy 10 zł). Następnie wypisywany jest pod przyciskiem tekst: „Dowóz
+                        będzie Cię kosztował … złotych”, gdzie kropki oznaczają koszt dowozu.</li>
+                </ul>
+            </ul>
+        </details>
+        <h3>Oblicz koszt dostawy</h3>
+        <label>
+            <input id="zielonaGora" type="checkbox" />Jestem z Zielonej Góry<br /></label>
+        </label>
+        <p>albo</p>
+        <label>Podaj liczbę kilometrów od Zielonej Góry:
+            <input id="iloscKilometrowZG" type="number" /><br />
+        </label>
+        <button type="button" onclick="obliczKosztDostawyZG()">Oblicz</button>
+        <p id="wynik_2"></p>
+    </div>
+    <div class="zadanie">
+        <h2>e14_2019_01_02</h2>
+        <details>
+            <summary>Wymagania dotyczące skryptu:</summary>
+            <ul>
+                <li>Wykonywany po stronie przeglądarki, wywoływany przez zdarzenie kliknięcia w dowolny przycisk</li>
+                <li>Skrypt ma za zadanie zmienić styl CSS dla paragrafu o treści „To jest przykład paragrafu, który…”
+                    znajdującego się w panelu głównym</li>
+                <li>Po wciśnięciu czerwonego przycisku, zmieniany jest kolor tekstu paragrafu na czerwony. Po wciśnięciu
+                    zielonego przycisku – na zielony. Po wciśnięciu niebieskiego przycisku – na niebieski</li>
+                <li>Ponadto wciśnięcie dowolnego przycisku powoduje</li>
+                <ul>
+                    <li>Pobranie wartości z pola edycyjnego i ustawienie rozmiaru czcionki paragrafu pobraną
+                        wartością
+                        wyrażoną w procentach. Na przykład, jeżeli wpisano wartość 150 – rozmiar czcionki powinien być
+                        ustawiony na „150%”</li>
+                    <li> Pobranie wyboru z listy i ustawienie czcionki paragrafu na pochyłą lub wyprostowaną</li>
+                </ul>
+            </ul>
+        </details>
+        <label>Podaj rozmiar tekstu w procentach:
+            <input id="rozmiarTekstu" type="number" />%<br />
+        </label>
+        <select onchange="typCzcionki(this.value)">
+            <option value="normal">Prosty</option>
+            <option value="italic">Kursywa</option>
+        </select>
+        <p>Jakim kolorem sformatować tekst? Wybierz przycisk</p>
+        <button type="button" id='r' onclick="kolorTekstu('red'); rozmiarCzcionki()"></button>
+        <button type="button" id='g' onclick="kolorTekstu('green'); rozmiarCzcionki()"></button>
+        <button type="button" id='b' onclick="kolorTekstu('blue'); rozmiarCzcionki()"></button>
+        <p id="wynik_3">To jest przykład paragrafu, który może być dowolnie formatowany przez JavaScript</p>
+    </div>
+    <div class="zadanie">
+        <h2>e14_2019_01_04</h2>
+        <details>
+            <summary>Wymagania dotyczące skryptu:</summary>
+            <ul>
+                <li>Wywoływany na stronie zamowienia.html po kliknięciu przycisku „Zamów”</li>
+                <li>Skrypt pobiera wartości wpisane w oba pola edycyjne i oblicza koszt kawy uwzględniając jej numer i
+                    wagę</li>
+                <li>Ceny kawy ze względu na jej numer przedstawia tabela 1, w przypadku wpisania innej wartości niż 1÷3
+                    cena wynosi 0 zł</li>
+                <li>Po obliczeniu całkowitego kosztu kawy jest wyświetlany wynik pod przyciskiem w formacie: „Koszt
+                    zamówienia wynosi: [koszt] zł”, gdzie [koszt] oznacza obliczony koszt.</li>
+            </ul>
+            <table>
+                <tr>
+                    <th>Numer kawy</th>
+                    <th>Nazwa</th>
+                    <th>Cena za 1 dekagram</th>
+                </tr>
+                <tr>
+                    <td>1</td>
+                    <td>Kawa palona Arabica</td>
+                    <td>5 zł</td>
+                </tr>
+                <tr>
+                    <td>2</td>
+                    <td>Kawa palona Robusta</td>
+                    <td>7 zł</td>
+                </tr>
+                <tr>
+                    <td>3</td>
+                    <td>Kawa bezkofeinowa</td>
+                    <td>6 zł</td>
+                </tr>
+            </table>
+        </details>
+        <label>numer kawy:<br />
+            <input type="number" id="numerKawy" /><br />
+        </label>
+        <label>Podaj wagę w dekagramach:<br />
+            <input type="number" id="wagaKawy" /><br />
+        </label>
+        <button type="button" onclick="obliczKawa();">Zamów</button>
+        <p id="wynik_4"></p>
+    </div>
+    <div class="zadanie">
+        <h2>e14_2019_01_11</h2>
+        <details>
+            <summary>Wymagania dotyczące skryptu:</summary>
+            <ul>
+                <li>Wykonywany po stronie przeglądarki, wywoływany przez zdarzenia kliknięcia w miniaturę obrazu,
+                    najechanie kursorem i opuszczenie przez kursor myszy miniatury obrazu</li>
+                <li>Po najechaniu kursorem myszy na dowolną miniaturę podmieniane jest zdjęcie kolorowe na odpowiadające
+                    mu zdjęcie z odcieniami szarości i filtrem, np plik pies1.jpg zamieniany jest na pies1-szary.jpg
+                </li>
+                <li>Po opuszczeniu miniatury przez kursor myszy jest wykonywana odwrotna transformacja – zdjęcie z
+                    odcieniami szarości jest zamieniane na zdjęcie kolorowe, np. plik pies1-szary.jpg zamieniany jest na
+                    pies1.jpg</li>
+                <li>Po kliknięciu na obraz-miniaturę wykonywane są dwie akcje:</li>
+                <ul>
+                    <li>Ta sama, co przy opuszczeniu kursora – podmiana obrazu z odcieniami szarości na kolorowy</li>
+                    <li>Kliknięty obraz jest wyświetlany w panelu prawym – dolnym. Np. jeżeli kliknięto na miniaturkę
+                        pies3.jpg z panelu prawego górnego, to w panelu prawym dolnym jest ładowany obraz pies3.jpg</li>
+                </ul>
+            </ul>
+        </details>
+        <div id="prawy1">
+            <h1>Wybierz zdjęcie</h1>
+            <img src="img/pies1.jpg" alt="pies1" id="pies1" onmouseover="over('pies1', 'img/pies1-szary.jpg')"
+                onmouseout="out('pies1', 'img/pies1.jpg')" onclick="clicked('pies1', 'img/pies1.jpg')" />
+            <img src="img/pies2.jpg" alt="pies2" id="pies2" onmouseover="over('pies2', 'img/pies2-szary.jpg')"
+                onmouseout="out('pies2', 'img/pies2.jpg')" onclick="clicked('pies2', 'img/pies2.jpg')" />
+            <img src="img/pies3.jpg" alt="pies3" id="pies3" onmouseover="over('pies3', 'img/pies3-szary.jpg')"
+                onmouseout="out('pies3', 'img/pies3.jpg')" onclick="clicked('pies3', 'img/pies3.jpg')" />
+        </div>
+        <div id="prawy2">
+            <p><img id="glownyPies" src="img/pies1.jpg" alt="pies-duży" /></p>
+        </div>
+    </div>
+    <div class="zadanie">
+        <h2>e14_2019_01_12</h2>
+        <details>
+            <summary>Wymagania dotyczące skryptu:</summary>
+            <ul>
+                <li>Wykonywany po stronie przeglądarki, wywoływany przez zdarzenia kliknięcia w miniaturę obrazu,
+                    najechania kursorem i opuszczenia przez kursor myszy miniatury obrazu</li>
+                <li>Po najechaniu kursorem myszy na dowolną miniaturę podmieniane jest zdjęcie pierwotne na
+                    odpowiadające mu zdjęcie z efektem, np. plik pies1.jpg zamieniany jest na pies1-odbicie.jpg</li>
+                <li>Po opuszczeniu miniatury przez kursor myszy jest wykonywana odwrotna transformacja – zdjęcie z
+                    efektem jest zamieniane na zdjęcie pierwotne, np. plik pies1-odbicie.jpg zamieniany jest na
+                    pies1.jpg</li>
+                <li>Po kliknięciu na obraz-miniaturę wykonywane są dwie akcje:</li>
+                <ul>
+                    <li>Ta sama, co przy opuszczeniu kursora – podmiana obrazu z efektem na pierwotny</li>
+                    <li>Kliknięty obraz jest wyświetlany w panelu prawym – dolnym. Np. jeżeli kliknięto na miniaturkę
+                        pies3.jpg z panelu prawego górnego, to w panelu prawym dolnym jest wyświetlany obraz pies3.jpg
+                    </li>
+                </ul>
+            </ul>
+        </details>
+        <div id="prawy1">
+            <h1>Wybierz zdjęcie</h1>
+            <img src="img/pies1.jpg" alt="pies1" id="pies12" onmouseover="over2('pies12', 'img/pies1-odbicie.jpg')"
+                onmouseout="out2('pies12', 'img/pies1.jpg')" onclick="clicked2('pies12', 'img/pies1.jpg')" />
+            <img src="img/pies2.jpg" alt="pies2" id="pies22" onmouseover="over2('pies22', 'img/pies2-odbicie.jpg')"
+                onmouseout="out2('pies22', 'img/pies2.jpg')" onclick="clicked2('pies22', 'img/pies2.jpg')" />
+            <img src="img/pies3.jpg" alt="pies3" id="pies32" onmouseover="over2('pies32', 'img/pies3-odbicie.jpg')"
+                onmouseout="out2('pies32', 'img/pies3.jpg')" onclick="clicked2('pies32', 'img/pies3.jpg')" />
+        </div>
+        <div id="prawy2">
+            <p><img id="glownyPies2" src="img/pies1.jpg" alt="pies-duży" /></p>
+        </div>
+    </div>
+    <div class="zadanie">
+        <h2>e14_2019_06_05</h2>
+        <details>
+            <summary>Wymagania dotyczące skryptu:</summary>
+            <ul>
+                <li>Wykonywany po stronie przeglądarki, wywoływany przyciskiem „Prześlij”</li>
+                <li>Skrypt pobiera wartości wprowadzone do pól formularza oraz sprawdza, czy zaznaczone zostało pole
+                    wyboru. Jeśli nie, poniżej formularza powinien wyświetlić się w paragrafie tekst w kolorze
+                    czerwonym, o treści „Musisz zapoznać się z regulaminem”. Gdy pole wyboru zostanie zaznaczone
+                    powinien pojawić się paragraf, który w pierwszej linii wyświetli imię i nazwisko, pisane wielkimi
+                    literami, poniżej tekst „Treść Twojej sprawy:” i treść wprowadzona do pola Usługa. Na dole tekst o
+                    treści „Na podany e-mail zostanie wysłana oferta.”, zgodnie z obrazem 3</li>
+            </ul>
+        </details>
+        <h2>Kontakt</h2>
+        <table>
+            <tr>
+                <td>Imię:</td>
+                <td>
+                    <input id="imieForm" type="text" />
+                </td>
+            </tr>
+            <tr>
+                <td>Nazwisko:</td>
+                <td>
+                    <input id="nazwiskoForm" type="text" />
+                </td>
+            </tr>
+            <tr>
+                <td>E-mail:</td>
+                <td>
+                    <input id="emailForm" type="email" />
+                </td>
+            </tr>
+            <tr>
+                <td>Usługa</td>
+                <td>
+                    <textarea id="uslugaForm"></textarea>
+                </td>
+            </tr>
+            <tr>
+                <td></td>
+                <td>
+                    <label>
+                        <input id="regulaminCheck" type="checkbox" />
+                        Zapoznałam/em się z regulaminem
+                    </label>
+                </td>
+            </tr>
+            <tr>
+                <td></td>
+                <td>
+                    <button type="reset">Resetuj</button>
+                    <button type="button" onclick="przeslijForm()" type="Prześlij">Prześlij</button>
+                </td>
+            </tr>
+        </table>
+        <p id="wynik_7"></p>
+    </div>
+    <div class="zadanie">
+        <h2>e14_2019_06_06</h2>
+        <details>
+            <summary>Wymagania dotyczące skryptu:</summary>
+            <ul>
+                <li>Wykonywany po stronie przeglądarki, wywoływany przyciskiem „Prześlij”</li>
+                <li>Skrypt pobiera wartości wprowadzone do pól formularza. Poniżej formularza, w akapicie, powinno
+                    wyświetlić się w pierwszej linii imię i nazwisko, poniżej adres email – zapisany małymi literami,
+                    bez względu na to jak zostanie wprowadzony do pola tekstowego, pod nim treść „Usługa: …”, gdzie w
+                    miejscu kropek znajduje się nazwa usługi wybranej z listy rozwijalnej, zgodnie z obrazem 3</li>
+            </ul>
+        </details>
+        <h2>Kontakt</h2>
+        <table>
+            <tr>
+                <td>Imię:</td>
+                <td>
+                    <input id="imieForm2" type="text" />
+                </td>
+            </tr>
+            <tr>
+                <td>Nazwisko:</td>
+                <td>
+                    <input id="nazwiskoForm2" type="text" />
+                </td>
+            </tr>
+            <tr>
+                <td>E-mail:</td>
+                <td>
+                    <input id="emailForm2" type="email" />
+                </td>
+            </tr>
+            <tr>
+                <td>Usługa</td>
+                <td>
+                    <select id="uslugaForm2">
+                        <option value="naprawa komputera">naprawa komputera</option>
+                        <option value="odzyskiwanie danych">odzyskiwanie danych</option>
+                        <option value="problemy z oprogramowaniem">problemy z oprogramowaniem</option>
+                        <option value="konfiguracja sieci LAN">konfiguracja sieci LAN</option>
+                        <option value="inne">inne</option>
+                    </select>
+                </td>
+            </tr>
+            <tr>
+                <td></td>
+                <td>
+                    <label>
+                        <input type="checkbox" />
+                        Wyślij kopię wiadomości
+                    </label>
+                </td>
+            </tr>
+            <tr>
+                <td></td>
+                <td>
+                    <button type="reset">Resetuj</button>
+                    <button type="button" onclick="przeslijForm2()" type="Prześlij">Prześlij</button>
+                </td>
+            </tr>
+        </table>
+        <p id="wynik_8"></p>
+    </div>
+    <div class="zadanie">
+        <h2>e14_2020_01_02</h2>
+        <details>
+            <summary>Wymagania dotyczące skryptu:</summary>
+            <ul>
+                <li>wykonywany po stronie przeglądarki, wywoływany przyciskiem „Zamów”</li>
+                <li>skrypt sprawdza wprowadzony numer kształtu i wypisuje w akapicie poniżej przycisku „Zamów” tekst
+                    „Zamówiłeś żelka: ”, a dalej w zależności od wprowadzone wartości: 1 – „miś”, 2 – „żabka”, 3 –
+                    „serce”, inny – „inny kształt”, np. „Zamówiłeś żelka: miś”</li>
+                <li>następnie skrypt sprawdza wartości RGB, a następnie zmienia kolor tła przycisku „Wybrany kolor” na
+                    kolor odpowiadający podanej wartości RGB</li>
+            </ul>
+        </details>
+        <label>
+            Podaj numer kształtu:<br />
+            <input type="number" id="ksztaltCukierka" /><br />
+        </label>
+        skomponuj swój kolor, podaj RGB:<br />
+        <label>
+            R:
+            <input type="number" id="rCukierek" />
+        </label>
+        <label>
+            G:
+            <input type="number" id="gCukierek" />
+        </label>
+        <label>
+            B:
+            <input type="number" id="bCukierek" /><br />
+        </label>
+        <button type="button" onclick="zamowCukierka();">Zamów</button>
+        <p id="wynik_9">Wybrany kształt</p>
+        <button type="button" id="kolorCukierka">Wybrany kolor</button>
+    </div>
+    <div class="zadanie">
+        <h2>e14_2020_01_03</h2>
+        <details>
+            <summary>Wymagania dotyczące skryptu:</summary>
+            <ul>
+                <li>wykonywany po stronie przeglądarki, wywoływany przyciskiem „Zamówienie”</li>
+                <li>skrypt sprawdza wprowadzony numer kształtu i wypisuje w akapicie poniżej przycisku „Zamówienie”
+                    tekst „Twoje zamówienie to cukierek ”, a dalej w zależności od wprowadzonej wartości: 1 – „cytryna”,
+                    2 – „liść”, 3 – „banan”, inny – „inny”, np. „Twoje zamówienie to cukierek liść”</li>
+                <li>następnie skrypt sprawdza wartości RGB, a następnie zmienia kolor tła przycisku „Kolor” na kolor
+                    odpowiadający podanej wartości RGB</li>
+            </ul>
+        </details>
+        <label>
+            Numer kształtu:<br />
+            <input type="number" id="ksztaltCukierka2" /><br />
+        </label>
+        skomponuj swój kolor, podaj RGB:<br />
+        <label>
+            R:
+            <input type="number" id="rCukierek2" />
+        </label>
+        <label>
+            G:
+            <input type="number" id="gCukierek2" />
+        </label>
+        <label>
+            B:
+            <input type="number" id="bCukierek2" /><br />
+        </label>
+        <button type="button" onclick="zamowCukierka2();">Zamówienie</button>
+        <p id="wynik_10">Twoje zamówienie</p>
+        <button type="button" id="kolorCukierka2">Kolor</button>
+    </div>
+    <div class="zadanie">
+        <h2>e14_2020_06_01</h2>
+        <details>
+            <summary>Wymagania dotyczące skryptu:</summary>
+            <ul>
+                <li>Skrypt pobiera z pola edycyjnego wielkość powierzchni do pomalowania</li>
+                <li>Na podstawie tej wartości wylicza minimalną liczbę puszek wystarczających do pomalowania tej
+                    powierzchni, wiedząc, że:</li>
+                <ul>
+                    <li>Jedna puszka zawiera 1 litr farby</li>
+                    <li>1 litr farby wystarcza do pomalowania powierzchni 4 m2</li>
+                </ul>
+                <li>Obliczona liczba puszek musi być liczbą całkowitą (zaokrąglona do góry). Np. do pomalowania
+                    powierzchni 6 m2, potrzeba 2 puszek, a nie 1 i pół.</li>
+                <li>Obliczony wynik jest wyświetlony pod przyciskiem, a jego treść to: „Liczba jednolitrowych puszek
+                    farby potrzebnych do pomalowania wynosi: ”, dalej wstawiony obliczony skryptem wynik</li>
+            </ul>
+        </details>
+        <h3>Obliczanie na podstawie powierzchni zapotrzebowania na farbę</h3>
+        <label>
+            Podaj powierzchnię:
+            <input type="number" id="powierzchnia" /><br />
+        </label>
+        <button type="button" onclick="policzFarba();">Policz</button>
+        <p id="wynik_11"></p>
+    </div>
+    <div class="zadanie">
+        <h2>e14_2020_06_04</h2>
+        <details>
+            <summary>Wymagania dotyczące skryptu:</summary>
+            <ul>
+                <li>Po wskazaniu kursorem obrazu w panelu środkowym jest wyświetlany komunikat w paragrafie
+                    przeznaczonym dla tej akcji (obraz 1)</li>
+                <ul>
+                    <li>wybór choinki: „Wybrałeś choinkę. Cena 10 zł”</li>
+                    <li>wybór Mikołaja: „Wybrałeś mikołaja. Cena 12 zł”</li>
+                    <li>wybór renifera: „Wybrałeś renifera. Cena 8 zł”</li>
+                </ul>
+            </ul>
+        </details>
+        <img class="ozdoba" src="img/choinka.jpg" alt="ozdoby choinkowe" onmouseover="ozdoba('choinka');" />
+        <img class="ozdoba" src="img/mikolaj.jpg" alt="ozdoby choinkowe" onmouseover="ozdoba('mikołaj');" />
+        <img class="ozdoba" src="img/renifer.jpg" alt="ozdoby choinkowe" onmouseover="ozdoba('renifer');" />
+        <p id="wynik_12"></p>
+    </div>
+    <div class="zadanie">
+        <h2>ee09_2019_06_02</h2>
+        <details>
+            <summary>Wymagania dotyczące skryptu:</summary>
+            <ul>
+                <li>Skrypt uruchamia się po wciśnięciu przycisku OBLICZ na stronie obliczenia.html</li>
+                <li>Skrypt pobiera wartości z obu pól edycyjnych numerycznych</li>
+                <li>Następnie oblicza koszt paliwa ze względu na rodzaj i liczbę litrów uwzględniając:</li>
+                <ul>
+                    <li>Gdy rodzaj paliwa jest równy 1 – koszt jednego litra paliwa wynosi 4 zł</li>
+                    <li>Gdy rodzaj paliwa jest równy 2 – koszt jednego litra paliwa wynosi 3,5 zł</li>
+                    <li>W każdym innym przypadku koszt paliwa wynosi 0 zł</li>
+                </ul>
+                <li>Następnie skrypt wyświetla wynik działania pod przyciskiem OBLICZ według wzoru: „koszt paliwa:
+                    [wartość] zł”, gdzie [wartość] oznacza obliczony wcześniej koszt paliwa</li>
+            </ul>
+        </details>
+        <h3>Oblicz koszt paliwa</h3>
+        <label>
+            Rodzaj paliwa (1-benzyna, 2-olej napędowy):<br />
+            <input type="number" id="rodzajPaliwa" /><br />
+        </label>
+        <label>
+            Ile litrów<br />
+            <input type="number" id="iloscLitrow" /><br />
+        </label>
+        <button type="button" onclick="obliczPaliwo()">OBLICZ</button>
+        <p id="wynik_13"></p>
+    </div>
+    <div class="zadanie">
+        <h2>ee09_2019_06_04</h2>
+        <details>
+            <summary>Wymagania dotyczące skryptu:</summary>
+            <ul>
+                <li>Funkcjonalność może być zaimplementowana w jednym skrypcie lub w wielu</li>
+                <li>Zadaniem jest wykonanie działania na liczbach A i B w zależności od wybranego przycisku</li>
+                <li>Skrypt uruchamia się po wciśnięciu dowolnego przycisku na stronie dzialania.html</li>
+                <li>Po uruchomieniu skrypt pobiera wartości z obu pól edycyjnych. Wartości powinny być liczbami
+                    całkowitymi. Nie jest wymagane, aby skrypt sprawdzał poprawność danych</li>
+                <li>Skrypt wyświetla wynik działania pod przyciskami według wzoru: „Wynik: [wartość]”, gdzie
+                    [wartość] oznacza obliczony wcześniej wynik działania</li>
+            </ul>
+        </details>
+        <h3>Proste działania</h3>
+        <label>
+            liczba A:
+            <input type="number" id="liczbaA" /><br />
+        </label>
+        <label>
+            liczba B:
+            <input type="number" id="liczbaB" /><br />
+        </label>
+        <button type="button" onclick="kalkulator('+');">+</button>
+        <button type="button" onclick="kalkulator('-');">-</button>
+        <button type="button" onclick="kalkulator('*');">*</button>
+        <button type="button" onclick="kalkulator('/');">/</button>
+        <button type="button" onclick="kalkulator('**');">A^B</button>
+        <p id="wynik_14"></p>
+    </div>
+    <div class="zadanie">
+        <h2>ee09_2019_06_05</h2>
+        <details>
+            <summary>Wymagania dotyczące skryptu:</summary>
+            <ul>
+                <li>Zadaniem jest wyświetlenie wyrazów ciągu arytmetycznego o podanym pierwszym wyrazie, różnicy
+                    ciągu i liczbie wyrazów</li>
+                <li>Skrypt uruchamia się po wciśnięciu przycisku na stronie liczby.html</li>
+                <li>Po uruchomieniu skrypt pobiera wartości z trzech pól edycyjnych. Wartości powinny być liczbami
+                    naturalnymi. Nie jest wymagane, aby skrypt sprawdzał poprawność danych
+                </li>
+                <li>Przykład dla danych: wyraz początkowy = 40; różnica = 3; liczba wyrazów w ciągu = 9, wyrazami
+                    ciągu są 40, 43, 46, 49, 52, 55, 58, 61, 64 (zaczynają się od 40, co 3, łącznie jest ich 9)</li>
+                <li>Skrypt wyświetla wynik działania pod przyciskiem według wzoru: „Ciąg arytmetyczny zawiera
+                    wyrazy: [wyraz1], [wyraz2], …, [wyraz_n]”, gdzie [wyraz1]… to kolejne wyrazy ciągu
+                </li>
+            </ul>
+        </details>
+        <h2>Generowanie ciągu arytmetycznego</h2>
+        <label>
+            Pierwszy wyraz A1:
+            <input type="number" id="pierwszyWyraz" /><br />
+        </label>
+        <label>
+            Różnica ciągu R:
+            <input type="number" id="roznicaCiagu" /><br />
+        </label>
+        <label>
+            Liczba wyrazów ciągu N:
+            <input type="number" id="liczbaWyrazow" /><br />
+        </label>
+        <button type="button" onclick="generujCiag();">Generuj Ciąg</button>
+        <p id="wynik_15"></p>
+    </div>
+    <div class="zadanie">
+        <h2>ee09_2020_01_02</h2>
+        <details>
+            <summary>Wymagania dotyczące skryptu:</summary>
+            <ul>
+                <li>skrypt uruchamia się po wciśnięciu przycisku OBLICZ na stronie kalkulacja.html</li>
+                <li>skrypt pobiera wartości z obu pól edycyjnych numerycznych</li>
+                <li>następnie oblicza ilość potrzebnego paliwa ze względu na drogę do przebycia w km i spalanie
+                    w litrach na 100 km</li>
+                <li>następnie skrypt wyświetla wynik działania pod przyciskiem OBLICZ według wzoru:
+                    „Potrzebujesz: [wartość] litrów paliwa”, gdzie [wartość] oznacza obliczoną wcześniej ilość paliwa
+                </li>
+            </ul>
+        </details>
+        <h2>Oblicz, ile litrów musisz zatankować</h2>
+        <label>
+            dystans do przejechania w km:<br />
+            <input type="number" id="dystansKM" /><br />
+        </label>
+        <label>
+            spalanie samochodu w l/100km:<br />
+            <input type="number" id="spalanie" /><br />
+        </label>
+        <button type="button" onclick="obliczPaliwo2()">OBLICZ</button>
+        <p id="wynik_16"></p>
+    </div>
+    <div class="zadanie">
+        <h2>ee09_2020_06_04</h2>
+        <details>
+            <summary>Wymagania dotyczące skryptu:</summary>
+            <ul>
+                <li>Uruchamia się po wciśnięciu przycisku na stronie twarz.html</li>
+                <li>Oblicza łączną cenę zabiegów wybranych za pomocą pól checkbox zgodnie z cennikiem w tabeli</li>
+                <li>Wyświetla wynik działania pod przyciskiem według wzoru „Cena zabiegów: [suma]”, gdzie [suma] oznacza
+                    całkowitą cenę wybranych zabiegów</li>
+            </ul>
+            <table>
+                <tr>
+                    <th>Usługa</th>
+                    <th>Cena</th>
+                </tr>
+                <tr>
+                    <td>Piling</td>
+                    <td>45</td>
+                </tr>
+                <tr>
+                    <td>Maska</td>
+                    <td>30</td>
+                </tr>
+                <tr>
+                    <td>Masaż</td>
+                    <td>20</td>
+                </tr>
+                <tr>
+                    <td>Regulacja brwi</td>
+                    <td>5</td>
+                </tr>
+            </table>
+        </details>
+        <h2>Sprawdź cenę swojej wizyty</h2>
+        <label>
+            <input type="checkbox" id="piling" />Piling<br />
+        </label>
+        <label>
+            <input type="checkbox" id="maska" />Maska<br />
+        </label>
+        <label>
+            <input type="checkbox" id="masaz" />Masaż<br />
+        </label>
+        <label>
+            <input type="checkbox" id="regulacjaBrwi" />Regulacja brwi<br />
+        </label>
+        <button type="button" onclick="cenaWizyty()">Sprawdź cenę</button>
+        <p id="wynik_17"></p>
+    </div>
+    <div class="zadanie">
+        <h2>ee09_2020_06_05</h2>
+        <details>
+            <summary>Wymagania dotyczące skryptu:</summary>
+            <ul>
+                <li>Uruchamia się po wciśnięciu przycisku na stronie fryzura.html</li>
+                <li>Podaje cenę strzyżenia w zależności od wyboru dokonanego przez pola radio zgodnie z cennikiem
+                    w tabeli</li>
+                <li>Wyświetla wynik działania pod przyciskiem według wzoru: „Cena strzyżenia: [wartość]”, gdzie
+                    [wartość] oznacza cenę strzyżenia dla wskazanej długości włosów</li>
+            </ul>
+            <table>
+                <tr>
+                    <th>Długość włosów</th>
+                    <th>Cena</th>
+                </tr>
+                <tr>
+                    <td>Krótkie</td>
+                    <td>25</td>
+                </tr>
+                <tr>
+                    <td>Średnie</td>
+                    <td>30</td>
+                </tr>
+                <tr>
+                    <td>Półdługie</td>
+                    <td>40</td>
+                </tr>
+                <tr>
+                    <td>Długie</td>
+                    <td>50</td>
+                </tr>
+            </table>
+        </details>
+        <h3>Dziś promocja na strzyżenie włosów</h3>
+        <label>
+            <input type="radio" name="strzyzenie" id="krotkie" />Krótkie<br />
+        </label>
+        <label>
+            <input type="radio" name="strzyzenie" id="srednie" />Średnie<br />
+        </label>
+        <label>
+            <input type="radio" name="strzyzenie" id="poldlugie" />Półdługie<br />
+        </label>
+        <label>
+            <input type="radio" name="strzyzenie" id="dlugie" />Długie<br />
+        </label>
+        <button type="button" onclick="cenaStrzyzenia()">Odkryj promocję</button>
+        <p id="wynik_18"></p>
+    </div>
+    <div class="zadanie">
+        <h2>ee09_2022_01_06</h2>
+        <details>
+            <summary>Wymagania dotyczące skryptu:</summary>
+            <ul>
+                <li>Napisany w języku JavaScript i wykonujący akcje spowodowane zdarzeniami kontrolek. Akcje
+                    modyfikują styl CSS bloku prawego i jego elementów, na podstawie przykładu przedstawionego na
+                    Obrazie 2b
+                </li>
+                <li>Po kliknięciu na dowolny przycisk zmieniający tło, zostaje zmienione tło bloku prawego na kolor
+                    odpowiadający podpisowi przycisku
+                </li>
+                <li>Po kliknięciu pola wyboru koloru czcionki, zostaje zmieniony kolor czcionki bloku prawego na kolor
+                    odpowiadający wyborowi</li>
+                <li>Po wpisaniu rozmiaru czcionki i wyjściu z kontrolki (tabulacją lub kliknięciem myszą w obszar poza
+                    kontrolką), zmieniany jest rozmiar czcionki dla całego bloku prawego. Nie jest wymagana walidacja
+                    tego pola, należy założyć, że pole jest wypełnione poprawnie
+                </li>
+                <li>Po kliknięciu w pole checkbox, w zależności od stanu pola, jest dodawane lub usuwane obramowanie
+                    obrazu – wymagana realizacja zdarzenia za pomocą funkcji
+                </li>
+                <li>Po kliknięciu w pola radio jest ustawiony wybrany rodzaj formatowania punktorów listy</li>
+            </ul>
+        </details>
+        <h3>Dziś promocja na strzyżenie włosów</h3>
+        <div id="lewy19">
+            <h1>Konfigurator stylu</h1>
+            <p>Podaj kolor tła</p>
+            <button type="button" id="Indigo" onclick="changeBg('Indigo')">Indigo</button>
+            <button type="button" id="SteelBlue" onclick="changeBg('SteelBlue')">SteelBlue</button>
+            <button type="button" id="Olive" onclick="changeBg('Olive')">Olive</button>
+            <p>Podaj kolor czcionki</p>
+            <select id="fontColor" onchange="fontColor(this.value)">
+                <option value="White">White</option>
+                <option value="Tan">Tan</option>
+                <option value="Bisque">Bisque</option>
+                <option value="Plum">Plum</option>
+            </select>
+            <p>Podaj rozmiar czcionki w procentach, np. 200%</p>
+            <input type="number" id="fontSize" oninput="fontSizing(this.value)" />
+            <p>Czy rysunek ma mieć ramkę?</p>
+            <input type="checkbox" id="borderCheck" onchange="ramka()" />Rysuj ramkę
+            <p>Jaki jest typ punktora listy?</p>
+            <input type="radio" name="listStyle" id="dysk" onchange="punktor('disc')" />Dysk<br />
+            <input type="radio" name="listStyle" id="kwadrat" onchange="punktor('square')" />Kwadrat<br />
+            <input type="radio" name="listStyle" id="okrąg" onchange="punktor('circle')" />Okrąg<br />
+        </div>
+        <div id="prawy19">
+            <img src="img/gibraltar.jpg" id="gibraltar" alt="półwysep Gibraltar" />
+            <ul id="lista">
+                <li>element 1</li>
+                <li>element 2</li>
+                <li>element 3</li>
+            </ul>
+            <p id="wynik_19">Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt
+                ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris
+                nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse
+                cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa
+                qui officia deserunt mollit anim id est laborum. </p>
+        </div>
+    </div>
+    <div class="zadanie">
+        <h2>ee09_2022_01_07</h2>
+        <details>
+            <summary>Wymagania dotyczące skryptu:</summary>
+            <ul>
+                <li>Obsługuje akcje wywoływane kliknięciem na zdjęciach z bloku lewego za pomocą języka JavaScript</li>
+                <li>Po kliknięciu na dowolnej miniaturze jest ona wyświetlona w bloku głównym (zamiast lanzarotte.jpg)
+                </li>
+                <li>Po kliknięciu ikony icon-off.jpg jest ona podmieniana na ikonę icon-on.jpg. Po ponownym kliknięciu –
+                    powraca do icon-off.jpg i tak na zmianę – realizowane za pomocą funkcji.</li>
+            </ul>
+        </details>
+        <div id="glowny20">
+            <img src="img/lanzarotte.jpg" id="lanzarotte" alt="galeria" />
+        </div>
+        <div id="lewy20">
+            <h3>Przeglądaj zdjęcia</h3>
+            <img onclick="zamianaImg('lanzarotte.jpg')" src="img/lanzarotte.jpg" alt="lanzarotte" />
+            <img onclick="zamianaImg('pekin.jpg')" src="img/pekin.jpg" alt="pekin" />
+            <img onclick="zamianaImg('serengeti.jpg')" src="img/serengeti.jpg" alt="serengeti" />
+            <img onclick="zamianaImg('wenecja.jpg')" src="img/wenecja.jpg" alt="wenecja" />
+            <img onclick="zamianaImg('tajlandia.jpg')" src="img/tajlandia.jpg" alt="tajlandia" />
+        </div>
+        <div id="prawy20">
+            <h3>Obrazy w naszej galerii</h3>
+            <table>
+                <tr>
+                    <td>Europa</td>
+                    <td>Azja</td>
+                    <td>Afryka</td>
+                </tr>
+                <tr>
+                    <td>2</td>
+                    <td>2</td>
+                    <td>1</td>
+                </tr>
+            </table>
+            <p>Polub nas</p>
+            <img src="img/icon-off.png" id="icon" onclick="iconChange()">
+        </div>
+    </div>
+    <div class="zadanie">
+        <h2>ee09_2022_06_02</h2>
+        <details>
+            <summary>Wymagania dotyczące skryptu:</summary>
+            <ul>
+                <li>Składa się z funkcji wywoływanej po wciśnięciu przycisku</li>
+                <li>Pobiera wartość wpisaną w polu edycyjnym</li>
+                <li>Ustala tło w formacie HSL dla komórek tabeli. Składowa H odpowiada wartości pobranej z pola
+                    edycyjnego, wartość L jest stała i wynosi zawsze 50%, wartość S jest różna dla poszczególnych
+                    komórek tabeli i wynosi:</li>
+                <ul>
+                    <li>dla pierwszego wiersza 100%</li>
+                    <li>dla drugiego wiersza, kolejno w czterech komórkach: 80%, 60%, 40% i 20%</li>
+                </ul>
+            </ul>
+            <p>Przykład:<br />
+                W polu edycyjnym wpisano 200, tła HSL komórek rozkładają się nastepująco</p>
+            <table>
+                <tr>
+                    <td colspan="4">200, 100%, 50%</td>
+                </tr>
+                <tr>
+                    <td>200, 80%, 50%</td>
+                    <td>200, 60%, 50%</td>
+                    <td>200, 40%, 50%</td>
+                    <td>200, 20%, 50%</td>
+                </tr>
+            </table>
+        </details>
+        <h2>Podaj składową H koloru w kodzie HSL</h2>
+        <p>0 do 30 czerwieniem do 60 żółcie, do 150 zielenie, do 250 niebieskie, do 360 fiolet i purpura</p>
+        <img src="img/kolory.jpg" alt="Przestrzeń barw HSL" />
+        <br />
+        <input type="number" id="wartoscH" min="0" max="360" />
+        <button type="button" onclick="paleta()">Generuj paletę</button>
+        <table>
+            <tr>
+                <td id="d1" colspan="4">Kolor główny</td>
+            </tr>
+            <tr>
+                <td id="d2">kolor 2</td>
+                <td id="d3">kolor 3</td>
+                <td id="d4">kolor 4</td>
+                <td id="d5">kolor 5</td>
+            </tr>
+        </table>
+    </div>
+    <div class="zadanie">
+        <h2>ee_09_2022_06_04</h2>
+        <details>
+            <summary>Wymagania dotyczące skryptu:</summary>
+            <ul>
+                <li>Składa się z funkcji aktualizującej i zamawiającej obsługujących przyciski oraz funkcji
+                    zaznaczającej
+                    braki.</li>
+                <li>Na początku działania skryptu jest wywoływana funkcja zaznaczająca braki oraz zainicjowana jest
+                    wartością 0 zmienna przechowująca id zamówienia</li>
+                <li>Funkcja zaznaczająca braki – obraz 3:</li>
+                <ul>
+                    <li>Sprawdza wartości w kolumnie „Dostępna Ilość” dla każdego wiersza tabeli</li>
+                    <li>Jeżeli wartość jest równa 0, tło tej komórki zmienione jest na czerwone</li>
+                    <li>Jeżeli wartość jest z przedziału [1, 5], tło tej komórki zmienione jest na żółte</li>
+                    <li>W każdym innym przypadku tło komórki jest koloru Honeydew</li>
+                </ul>
+                <li>Funkcja aktualizująca – obraz 4:</li>
+                <ul>
+                    <li>Wywoływana po przyciśnięciu przycisku w danym wierszu tabeli</li>
+                    <li>Wyświetla okno z polem do wpisania wartości, podpisane: „Podaj nową ilość:”</li>
+                    <li>Podaną w oknie wartość wpisuje do odpowiedniego wiersza, kolumny „Dostępna ilość”</li>
+                    <li>Wywołuje funkcję zaznaczającą braki</li>
+                </ul>
+                <li>Funkcja zamawiająca – obraz 5:</li>
+                <ul>
+                    <li>Zwiększa o jeden id zamówienia
+                    </li>
+                    <li>Wyświetla komunikat o treści: „Zamówienie nr: [id zamówienia] Produkt: [nazwa produktu]”.
+                        Pola zapisane w [] wypełniane są automatycznie wartością id_zamowienia oraz nazwą produktu
+                        z kolumny „Produkt” danego wiersza tabeli</li>
+                </ul>
+        </details>
+        <table>
+            <tr>
+                <th>Produkt</th>
+                <th>Jednostka</th>
+                <th>Dostępna ilość</th>
+                <th>Aktualizacja</th>
+                <th>Zamówienie</th>
+            </tr>
+            <!-- Wersja nr 1 
+            <tr>
+                <td class='produkt'>Skrętka U/UTP drut</td>
+                <td>metr</td>
+                <td class='ilosc'>20</td>
+                <td><button type="button" class='aktualizuj'>Aktualizuj</button></td>
+                <td><button type="button" class='zamow'>Zamów</button></td>
+            </tr>
+            <tr>
+                <td class='produkt'>Skrętka U/UTP linka</td>
+                <td>metr</td>
+                <td class='ilosc'>2</td>
+                <td><button type="button" class='aktualizuj'>Aktualizuj</button></td>
+                <td><button type="button" class='zamow'>Zamów</button></td>
+            </tr>
+            <tr>
+                <td class='produkt'>Wtyki 8P8C</td>
+                <td>sztuki</td>
+                <td class='ilosc'>10</td>
+                <td><button type="button" class='aktualizuj'>Aktualizuj</button></td>
+                <td><button type="button" class='zamow'>Zamów</button></td>
+            </tr>
+            <tr>
+                <td class='produkt'>Moduły Keystone</td>
+                <td>sztuki</td>
+                <td class='ilosc'>30</td>
+                <td><button type="button" class='aktualizuj'>Aktualizuj</button></td>
+                <td><button type="button" class='zamow'>Zamów</button></td>
+            </tr>
+                -->
+                <!-- Wersja nr 2 -->
+            <tr>
+                <td>Skrętka U/UTP drut</td>
+                <td>metr</td>
+                <td id="p1">20</td>
+                <td><button type="button" onclick="aktualizuj('p1')">Aktualizuj</button></td>
+                <td><button type="button" onclick="zamow('Skrętka U/UTP drut')">Zamów</button></td>
+            </tr>
+            <tr>
+                <td>Skrętka U/UTP linka</td>
+                <td>metr</td>
+                <td id="p2">2</td>
+                <td><button type="button" onclick="aktualizuj('p2')">Aktualizuj</button></td>
+                <td><button type="button" onclick="zamow('Skrętka U/UTP linka')">Zamów</button></td>
+            </tr>
+            <tr>
+                <td>Wtyki 8P8C</td>
+                <td>sztuki</td>
+                <td id="p3">10</td>
+                <td><button type="button" onclick="aktualizuj('p3')">Aktualizuj</button></td>
+                <td><button type="button" onclick="zamow('Wtyki 8P8C')">Zamów</button></td>
+            </tr>
+            <tr>
+                <td>Moduły Keystone</td>
+                <td>sztuki</td>
+                <td id="p4">30</td>
+                <td><button type="button" onclick="aktualizuj('p4')">Aktualizuj</button></td>
+                <td><button type="button" onclick="zamow('Moduły Keystone')">Zamów</button></td>
+            </tr>
+        </table>
+    </div>
+    <div class="zadanie">
+        <h2>inf_03_2022_06_02</h2>
+        <details>
+            <summary>Wymagania dotyczące skryptu:</summary>
+            <ul>
+                <li>Skrypt uruchamia się po wciśnięciu przycisku OBLICZ na stronie obliczenia.html</li>
+                <li>Skrypt pobiera wartości z obu pól edycyjnych
+                </li>
+                <li>Następnie oblicza koszt paliwa ze względu na rodzaj i liczbę litrów uwzględniając:
+                </li>
+                <ul>
+                    <li>Gdy rodzaj paliwa jest równy 1 – koszt jednego litra paliwa wynosi 4 zł</li>
+                    <li>Gdy rodzaj paliwa jest równy 2 – koszt jednego litra paliwa wynosi 3,5 zł</li>
+                    <li>W każdym innym przypadku koszt paliwa wynosi 0 zł
+                    </li>
+                </ul>
+                <li>Następnie skrypt wyświetla wynik działania pod przyciskiem OBLICZ według wzoru: „koszt paliwa:
+                    [wartość] zł”, gdzie [wartość] oznacza obliczony wcześniej koszt paliwa.</li>
+            </ul>
+        </details>
+        <h2>Orientacyjny koszt paliwa</h2>
+        <label>
+            Rodzaj paliwa (1-benzyna, 2-olej napędowy):<br />
+            <input type="number" id="rodzajPaliwa3" /><br />
+        </label>
+        <label>
+            Ile litrów?<br />
+            <input type="number" id="iloscLitrow3" /><br />
+        </label>
+        <button type="button" onclick="obliczPaliwo3()">OBLICZ</button>
+        <p id="wynik_23"></p>
+    </div>
+    <script src="main.js"></script>
+</body>
+
+</html>
