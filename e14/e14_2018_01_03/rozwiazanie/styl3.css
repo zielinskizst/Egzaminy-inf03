@@ -1,0 +1,48 @@
+body {
+	box-sizing: border-box;
+	margin: 0;
+}
+#baner {
+	background: #00839C;
+	color: white;
+	font-family: Tahoma;
+	text-align: center;
+	height: 80px;
+}
+#lewy {
+	background: #20D9FB;
+	width: 30%;
+	height: 750px;
+	float: left;
+}
+#prawy {
+	background: #00BDE2;
+	width: 70%;
+	height: 750px;
+	float: left;
+}
+#stopka {
+	background: #00839C;
+	color: white;
+	text-align: right;
+}
+img {
+	padding: 30px;
+	border: 2px solid blue;
+}
+a:before {
+	color: black;
+}
+a:after {
+	color: white;
+}
+button {
+	background: blue;
+	color: white;
+	border: none;
+	margin: 20px;
+	padding: 5px
+}
+h1 {
+	margin: 0;
+}
