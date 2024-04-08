@@ -48,12 +48,12 @@ Wszystkie zadania JavaScript z arkuszy z lat 2018-2022 [zadania_js](zadania_js)
 				[Baza](e14/e14_2018_06_04/zad4.zip) \
 				[Rozwiązanie](e14/e14_2018_06_04/rozwiazanie)
 				[RozwiązanieZIP](e14/e14_2018_06_04/rozwiazanie.zip)
-  - 05 (**JS**) - Dom weselny [E.14-03-18.06](e14/e14_2018_06_05) \
+  - 05 (**JS**) - Dom weselny [E.14-05-18.06](e14/e14_2018_06_05) \
 				[Arkusz](e14/e14_2018_06_05/e14_2018_06_05.pdf) 
 				[Baza](e14/e14_2018_06_05/zad5.zip) \
 				[Rozwiązanie](e14/e14_2018_06_05/rozwiazanie)
 				[RozwiązanieZIP](e14/e14_2018_06_05/rozwiazanie.zip)
-  - 06 (**JS**) - Pizzeria [E.14-02-18.06](e14/e14_2018_06_06) \
+  - 06 (**JS**) - Pizzeria [E.14-06-18.06](e14/e14_2018_06_06) \
 				[Arkusz](e14/e14_2018_06_06/e14_2018_06_06.pdf) 
 				[Baza](e14/e14_2018_06_06/zad6.zip) \
 				[Rozwiązanie](e14/e14_2018_06_06/rozwiazanie)
