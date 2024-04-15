@@ -1,0 +1,40 @@
+body {
+	box-sizing: border-box;
+	margin: 0;
+	font-family: Helvetica;
+}
+#baner {
+	background: DarkCyan;
+	color: white;
+	text-align: center;
+	padding: 20px;
+}
+#formularz {
+	background: LightSeaGreen;
+	text-align: center;
+	padding: 60px;
+}
+#lewy, #srodkowy {
+	background: Teal;
+	color: white;
+	text-align: center;
+	height: 350px;
+	width: 25%;
+	float: left;
+}
+#prawy {
+	background: Teal;
+	height: 350px;
+	width: 50%;
+	float: left;
+}
+#stopka {
+	background: DarkCyan;
+	color: white;
+	padding: 40px;
+	clear: both;
+}
+ul {
+	border: 4px dotted rgb(127, 255, 212);
+	list-style-position: inside;
+}
